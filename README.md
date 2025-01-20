@@ -13,3 +13,5 @@ blah_data_platform/
     └── sqlite_schema.sql   # SQL schema for creating tables
 ```
 
+
+A sample project with Python, Lua, sqlite components - build a database, fetch data, render the data.  
