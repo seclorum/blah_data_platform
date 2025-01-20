@@ -30,7 +30,7 @@ end
 
 -- Main function
 local function main()
-    local db_name = "war_data.db"
+    local db_name = "blah_data.db"
     local db = connect_to_db(db_name)
     local raw_data = fetch_raw_data(db)
     render_data(raw_data)

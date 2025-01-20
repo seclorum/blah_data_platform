@@ -29,6 +29,7 @@ def fetch_data(source_name, url):
     """
     Fetch JSON data from a source URL and return it as a dictionary.
     """
+    print(f"Would get (but is disabled) {url}")
     return None
     try:
         response = requests.get(url)
