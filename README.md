@@ -1,3 +1,4 @@
+```
 blah_data_platform/
 │
 ├── CMakeLists.txt          # CMake configuration file
@@ -10,4 +11,7 @@ blah_data_platform/
     ├── render_data.lua     # Lua script for rendering data
     ├── build_db.py   # Python script for setting up the database
     └── sqlite_schema.sql   # SQL schema for creating tables
+```
 
+
+A sample project with Python, Lua, sqlite components - build a database, fetch data, render the data.  
