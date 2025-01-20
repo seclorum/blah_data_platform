@@ -1,15 +1,15 @@
-# Python: Collecting Data from Sources and Storing in SQLite
-
+# Import configuration
 import sqlite3
 import requests
 import json
+from config import DB_FILE, SOURCES
 
 # SQLite schema setup
-def setup_database(db_name="war_data.db"):
+def setup_database():
     """
     Set up SQLite schema with a general table for raw data.
     """
-    conn = sqlite3.connect(db_name)
+    conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
 
     # Table to store raw JSON data from each source
@@ -38,11 +38,11 @@ def fetch_data(source_name, url):
         return None
 
 # Save fetched data into SQLite
-def save_data_to_db(db_name, source_name, data):
+def save_data_to_db(source_name, data):
     """
     Save raw JSON data to the SQLite database.
     """
-    conn = sqlite3.connect(db_name)
+    conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute("INSERT INTO raw_data (source, data) VALUES (?, ?)", (source_name, json.dumps(data)))
     conn.commit()
@@ -52,19 +52,10 @@ def save_data_to_db(db_name, source_name, data):
 def main():
     setup_database()
 
-    # Define data sources (URLs would typically be API endpoints or data URLs)
-    sources = {
-        "ACLED": "https://api.acleddata.com/example",
-        "UCDP": "https://ucdp.uu.se/api/example",
-        "GTD": "https://www.start.umd.edu/gtd/api/example",
-        "WHO": "https://who.int/api/example",
-        "PRIO": "https://prio.org/api/example"
-    }
-
-    for source_name, url in sources.items():
+    for source_name, url in SOURCES.items():
         data = fetch_data(source_name, url)
         if data:
-            save_data_to_db("war_data.db", source_name, data["data"])
+            save_data_to_db(source_name, data["data"])
 
 if __name__ == "__main__":
     main()
