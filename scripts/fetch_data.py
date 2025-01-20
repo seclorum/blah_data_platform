@@ -29,6 +29,7 @@ def fetch_data(source_name, url):
     """
     Fetch JSON data from a source URL and return it as a dictionary.
     """
+    return None
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -50,12 +51,11 @@ def save_data_to_db(source_name, data):
 
 # Main function to fetch and save data from multiple sources
 def main():
-    #build_db()
-
-    #for source_name, url in SOURCES.items():
-        #data = fetch_data(source_name, url)
-        #if data:
-        #    save_data_to_db(source_name, data["data"])
+    build_db()
+    for source_name, url in SOURCES.items():
+        data = fetch_data(source_name, url)
+        if data:
+            save_data_to_db(source_name, data["data"])
 
 if __name__ == "__main__":
     main()
