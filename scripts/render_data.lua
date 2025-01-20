@@ -1,5 +1,5 @@
 -- Lua: Reading SQLite Data and Rendering
-local sqlite3 = require("lsqlite3")
+local sqlite3 = require("lua-sqlite3")
 
 -- Connect to SQLite database
 local function connect_to_db(db_name)
