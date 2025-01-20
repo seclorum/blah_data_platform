@@ -37,6 +37,11 @@ add_custom_target(render_data
     COMMENT "Rendering data from SQLite database"
 )
 
+add_custom_target(clean_build
+	COMMENT "Cleanining build dirs.."
+	COMMAND rm -rf scripts/__pycache__ builds/
+)
+
 # Optionally, run all steps with a default target
 add_custom_target(all_steps
     DEPENDS build_db fetch_data render_data

@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "../data")
 
 # Database file path
-DB_FILE = os.path.join(DATA_DIR, "war_data.db")
+DB_FILE = os.path.join(DATA_DIR, "blah_data.db")
 
 # Ensure the data directory exists
 if not os.path.exists(DATA_DIR):

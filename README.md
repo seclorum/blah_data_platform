@@ -1,10 +1,10 @@
-war_data_platform/
+blah_data_platform/
 │
 ├── CMakeLists.txt          # CMake configuration file
 ├── README.md               # Project description and instructions
 ├── config.py               # Configuration file
 ├── data/                   # Data storage directory
-│   └── war_data.db         # SQLite database (created during build_db)
+│   └── blah_data.db         # SQLite database (created during build_db)
 └── scripts/
     ├── fetch_data.lua      # Lua script for data fetching
     ├── render_data.lua     # Lua script for rendering data
