@@ -2,10 +2,16 @@ import sqlite3
 import os
 from config import DB_FILE  # Import the DB_FILE path from config.py
 
+def read_sql_schema(schema_file):
+    """
+    Read the SQL schema file and return its content.
+    """
+    with open(schema_file, 'r') as file:
+        return file.read()
+
 def setup_database():
     """
-    Set up SQLite database schema for storing raw data.
-    Creates a table for raw data (source, data, and timestamp).
+    Set up SQLite database schema using the SQL in sqlite_schema.sql.
     """
     print(f"Setting up database at {DB_FILE}...")
     
@@ -19,30 +25,12 @@ def setup_database():
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
 
-    # Create table to store raw JSON data from sources
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS raw_data (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        source TEXT NOT NULL,
-        data TEXT NOT NULL,
-        fetched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
-    print("Table 'raw_data' created (or already exists).")
-
-    # Optionally, create other tables for normalized data
-    # Example: Creating a table for conflict events (This part can be expanded later)
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS conflict_events (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        source TEXT NOT NULL,
-        event_date DATE NOT NULL,
-        location TEXT NOT NULL,
-        fatalities INTEGER,
-        details TEXT
-    )
-    """)
-    print("Table 'conflict_events' created (or already exists).")
+    # Read the schema from the sqlite_schema.sql file
+    schema_sql = read_sql_schema(os.path.join(os.path.dirname(__file__), 'sqlite_schema.sql'))
+    
+    # Execute the schema
+    cursor.executescript(schema_sql)
+    print("Database schema applied.")
 
     # Commit changes and close the connection
     conn.commit()

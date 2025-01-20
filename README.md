@@ -1,9 +1,13 @@
 war_data_platform/
 │
-├── README.md                  # Project description and setup instructions
-├── requirements.txt           # Python dependencies
-├── scripts/                   # Data collection and transformation scripts
-│   ├── fetch_sources.py   # Fetch some data from open sources 
-│   ├── sqlite_schema.sql  # Common database 
-│   └── render_data.lua    # Render the data somehow
-└── data/                      # Run-time data directory, not included in repo
+├── CMakeLists.txt          # CMake configuration file
+├── README.md               # Project description and instructions
+├── config.py               # Configuration file
+├── data/                   # Data storage directory
+│   └── war_data.db         # SQLite database (created during build_db)
+└── scripts/
+    ├── fetch_data.lua      # Lua script for data fetching
+    ├── render_data.lua     # Lua script for rendering data
+    ├── setup_database.py   # Python script for setting up the database
+    └── sqlite_schema.sql   # SQL schema for creating tables
+
