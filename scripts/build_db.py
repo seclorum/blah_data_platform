@@ -9,7 +9,7 @@ def read_sql_schema(schema_file):
     with open(schema_file, 'r') as file:
         return file.read()
 
-def setup_database():
+def build_db():
     """
     Set up SQLite database schema using the SQL in sqlite_schema.sql.
     """
@@ -39,5 +39,5 @@ def setup_database():
 
 # Main entry point for the script
 if __name__ == "__main__":
-    setup_database()
+    build_db()
 

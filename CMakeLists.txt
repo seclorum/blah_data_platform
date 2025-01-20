@@ -17,7 +17,7 @@ set(LUA_EXECUTABLE "/usr/local/bin/lua")
 # Add the Python scripts to be run
 add_custom_target(build_db
 	COMMENT "python3:${Python3_EXECUTABLE}"
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/setup_database.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/build_db.py
     COMMENT "Setting up SQLite database"
 )
 

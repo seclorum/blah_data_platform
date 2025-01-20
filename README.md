@@ -8,6 +8,6 @@ war_data_platform/
 └── scripts/
     ├── fetch_data.lua      # Lua script for data fetching
     ├── render_data.lua     # Lua script for rendering data
-    ├── setup_database.py   # Python script for setting up the database
+    ├── build_db.py   # Python script for setting up the database
     └── sqlite_schema.sql   # SQL schema for creating tables
 

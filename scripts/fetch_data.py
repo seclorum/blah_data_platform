@@ -5,7 +5,7 @@ import json
 from config import DB_FILE, SOURCES
 
 # SQLite schema setup
-def setup_database():
+def build_db():
     """
     Set up SQLite schema with a general table for raw data.
     """
@@ -50,12 +50,12 @@ def save_data_to_db(source_name, data):
 
 # Main function to fetch and save data from multiple sources
 def main():
-    setup_database()
+    #build_db()
 
-    for source_name, url in SOURCES.items():
-        data = fetch_data(source_name, url)
-        if data:
-            save_data_to_db(source_name, data["data"])
+    #for source_name, url in SOURCES.items():
+        #data = fetch_data(source_name, url)
+        #if data:
+        #    save_data_to_db(source_name, data["data"])
 
 if __name__ == "__main__":
     main()
